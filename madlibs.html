@@ -1,0 +1,71 @@
+<!doctype html> 
+<html lang="en">
+<head>
+  <title>Mad Libs Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="madlibs/img/appicon.ico" /> 
+  <link href="https://fonts.googleapis.com/css?family=Lato|Mukta+Malar" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://ryanhunter.org/portfolio/libs/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="http://ryanhunter.org/portfolio/libs/vanguard/styles.css">
+  <link href="madlibs/madlibs.css" rel="stylesheet" type="text/css" />
+  
+  <script src="http://ryanhunter.org/portfolio/libs/angularjs/1.6/angular.min.js"></script>
+  <script src="http://ryanhunter.org/portfolio/libs/angularjs/1.6/angular-animate.min.js"></script>
+  <script src="madlibs/madlibs.js"></script>
+</head>
+
+<body ng-app="myApp" ng-cloak class="ng-cloak">
+
+<!------------------>
+  <div class="wrapper">
+    <div class="header">
+      <div class="main-logo">
+        <h1 class="tag-line">MadLibs Game</h1>
+      </div>
+    </div>
+	
+    <!-- form -->
+    <form class="interaction" ng-controller="LibsCtrl" ng-submit='submitted=true; submit();' name="myForm">
+      <!-- form inputs -->
+      <div class="animate-form" ng-hide="formInputs">
+        <h2 ng-view class="view-animation">Please fill in the your starter words below.</h2>
+        <div class="info">
+          <input type="text" placeholder="Male Name" ng-model="data.firstName" name="myName" required="">
+          <input type="text" placeholder="Job Title" ng-model="data.jobTitle" name="myJobTitle" required="">
+          <input type="text" placeholder="Tedious Task" ng-model="data.tediousTask" name="myTediousTask" required="">
+          <input type="text" placeholder="Dirty Task" ng-model="data.dirtyTask" name="myDirtyTask" required="">
+          <input type="text" placeholder="Celebrity" ng-model="data.celebrity" name="myCelebrity" required="">
+          <input type="text" placeholder="Useless Skill" ng-model="data.uselessSkill" name="myUselessSkill" required="">
+          <input type="text" placeholder="Obnoxious Celebrity" ng-model="data.obnoxiousCelebrity" name="myOC" required="">
+          <input type="number" placeholder="Huge Number" ng-model="data.hugeNumber" name="myHugeNumber" required="">
+          <input type="text" placeholder="Adjective" ng-model="data.adjective" name="myAdjective" required="">
+        </div>
+
+		<button class="btn-generate btn btn-primary" type="submit">
+		  <span class="icon icon-refresh"></span><span> Generate Your Story </span>
+		</button>
+      </div>
+
+      <!-- MadLib Generated story below here -->
+      <div class="content animate-content" ng-hide="madLib">
+        <p>
+          <img src="madlibs/ml_gamedev.jpg" alt="Game Development"  style="width:100%">
+		  <span class="name">{{data.firstName}}</span> is a <span>{{data.jobTitle}}</span> who loves video games, electronics, the Internet, and new technologies. Even though <span class="name">{{data.firstName}}</span> loves most parts of his job, he strongly disliked <span>{{data.tediousTask}}</span> and <span>{{data.dirtyTask}}</span>. So,
+          <span class="name">{{data.firstName}}</span> met with his life mentor <span class="name">{{data.celebrity}}</span> who encouraged him to learn how <span>{{data.uselessSkill}}</span> from free night classes by the technical user group at his local library.
+		  <br> <br>
+		  The library user group did not have a course on <span>{{data.uselessSkill}}</span>, but they did have an excellent free course on game development entitled <span class="madlibs_course">"HTML5 Game Development from Scratch to Fancy Portfolio ~ Be Job Ready in 3 Months"</span>, so <span class="name">{{data.firstName}}</span> did that course instead.
+        </p>
+		<img src="madlibs/ml_camaro.jpg" alt="Fancy Sports Car"  style="width:100%">
+        <p>
+          "A most excellent decision!" <span class="name">{{data.firstName}}</span> thought while looking at the new sports car he bought from his new job.  With his new game development skills, <span class="name">{{data.firstName}}</span> created and programmed a(n) <span>{{data.adjective}}</span> A.I. based robot named <span class="name">{{data.obnoxiousCelebrity}}</span> that not only loved doing <span>{{data.dirtyTask}}</span>, but did it <span>{{data.hugeNumber | number}}</span> times faster.
+        </p>
+        <button class="btn-start-over" type="reset" ng-click="startOver();"><span class="icon icon-loop"></span> Start Over </button>
+      </div>
+    </form>
+  </div>
+<!------------------>	
+</body>
+</html>
